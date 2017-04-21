@@ -1,26 +1,26 @@
 #include<reg52.h>
 
-sbit IN1=P1^0;	//×óÂ·
+sbit IN1=P1^0;	//å·¦è·¯
 sbit IN2=P1^1;
-sbit IN3=P1^2;	//ÓÒÂ·
+sbit IN3=P1^2;	//å³è·¯
 sbit IN4=P1^3;
 
 
-sbit RED1=P3^4;	//×óºìÍâ
-sbit RED2=P3^5;	//ÓÒºìÍâ
+sbit RED1=P3^4;	//å·¦çº¢å¤–
+sbit RED2=P3^5;	//å³çº¢å¤–
 
-sbit ENA1=P2^4;	//×óÂ·Ê¹ÄÜ
-sbit ENA2=P2^5;	//ÓÒÂ·Ê¹ÄÜ
+sbit ENA1=P2^4;	//å·¦è·¯ä½¿èƒ½
+sbit ENA2=P2^5;	//å³è·¯ä½¿èƒ½
 
 #define uint unsigned int
 #define uchar unsigned char
 	
-#define L_go			{IN1=1,IN2=0;}	//×óÂ·µç»úÕı×ª
-#define L_stop		{IN1=0,IN2=0;}	//×óÂ·µç»úÍ£Ö¹
-#define L_back		{IN1=0,IN2=1;}	//×óÂ·µç»ú·´×ª
-#define R_go			{IN3=1,IN4=0;}	//ÓÒÂ·µç»úÕı×ª
-#define R_stop		{IN3=0,IN4=0;}	//ÓÒÂ·µç»úÍ£Ö¹
-#define R_back		{IN3=0,IN4=1;}	//ÓÒÂ·µç»ú·´×ª
+#define L_go			{IN1=1,IN2=0;}	//å·¦è·¯ç”µæœºæ­£è½¬
+#define L_stop		{IN1=0,IN2=0;}	//å·¦è·¯ç”µæœºåœæ­¢
+#define L_back		{IN1=0,IN2=1;}	//å·¦è·¯ç”µæœºåè½¬
+#define R_go			{IN3=1,IN4=0;}	//å³è·¯ç”µæœºæ­£è½¬
+#define R_stop		{IN3=0,IN4=0;}	//å³è·¯ç”µæœºåœæ­¢
+#define R_back		{IN3=0,IN4=1;}	//å³è·¯ç”µæœºåè½¬
 
 void delay(int x)
 	{
@@ -59,21 +59,21 @@ void main()
 	}	
 	
 	
-void run()	//Ç°½ø
+void run()	//å‰è¿›
 	{
 		PUSH_left=4;
 		PUSH_right=4;
 		L_go;
 		R_go;
 	}
-void left()	//×ó×ª
+void left()	//å·¦è½¬
 	{
 		PUSH_left=4;
 		PUSH_right=8;
 		R_go;
 		L_go;	
 	}
-void right()	//ÓÒ×ª
+void right()	//å³è½¬
 	{
 		PUSH_left=8;
 		PUSH_right=4;
@@ -115,7 +115,7 @@ void init()
 		TR0=1;
 	}
 	
-void timer0()interrupt 1	//ÖĞ¶Ï
+void timer0()interrupt 1	//ä¸­æ–­
 	{
 		TH0=(65536-100)/256;
 		TL0=(65536-100)%256;
